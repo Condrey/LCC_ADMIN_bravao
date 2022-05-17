@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-
+android:id="@+id/container"
     android:layout_marginTop="1dp">
 
     <com.google.android.flexbox.FlexboxLayout
@@ -34,41 +34,6 @@
                 tools:text="Praise Him" />
 
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-
-                card_view:layout_constraintTop_toTopOf="parent"
-                card_view:layout_constraintEnd_toEndOf="parent"
-                android:gravity="end"
-                android:orientation="horizontal"
-                android:padding="5dp">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/editBtn"
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@android:color/transparent"
-                    android:gravity="start"
-                    android:textColor="@color/black"
-                    card_view:icon="@drawable/ic_baseline_edit_24"
-                    card_view:iconTint="@color/colorPrimary" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/deleteBtn"
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
-                    android:gravity="end"
-                    android:textColor="@color/black"
-                    card_view:icon="@drawable/ic_baseline_delete_forever_24"
-                    card_view:iconTint="@color/delete_color" />
-
-            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

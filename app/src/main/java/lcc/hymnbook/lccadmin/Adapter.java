@@ -83,7 +83,7 @@ public class Adapter {
                 viewHolder.songchorus6.setText(arrayList.get(position).get_6hymn_chorus_luganda());
                 viewHolder.songverse7.setText(arrayList.get(position).get_7hymn_VERSE_luganda());
                 viewHolder.songchorus7.setText(arrayList.get(position).get_7hymn_chorus_luganda());
-            } else {
+            } else if (language != null && language.equals("English")) {
 
                 viewHolder.songName.setText(songNumber + ". " + arrayList.get(position).getHymn_title_english());
                 viewHolder.songverse1.setText(arrayList.get(position).get_1hymn_VERSE_english());
@@ -276,13 +276,15 @@ public class Adapter {
 
     ArrayList<ItemModelSongs> arrayList;
 Context context;
+String language;
 
-    public CustomAdapterHymns(ArrayList<ItemModelSongs> arrayList, Context context) {
-        this.arrayList = arrayList;
-        this.context = context;
-    }
+     public CustomAdapterHymns(ArrayList<ItemModelSongs> arrayList, Context context, String language) {
+         this.arrayList = arrayList;
+         this.context = context;
+         this.language = language;
+     }
 
-    @NonNull
+     @NonNull
     @Override
     public CustomAdapterHymns.viewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(context).inflate(R.layout.hymn_song_list, viewGroup, false);
@@ -293,18 +295,35 @@ Context context;
     @SuppressLint({"SetTextI18n", "InflateParams"})
     @Override
     public  void onBindViewHolder(@NonNull CustomAdapterHymns.viewHolder viewHolder, int position) {
+        viewHolder.itemView.setTag(arrayList.get(position).getHymn_number());
 
-        String songName_inner =  arrayList.get(position).getHymn_title_english();
+        String songName_inner = null;
+if (language.equalsIgnoreCase(Variables.KEY_LANGUAGE_ENGLISH)){
+   songName_inner   =  arrayList.get(position).getHymn_title_english();
+}else if (language.equalsIgnoreCase(Variables.KEY_LANGUAGE_LUGANDA)){
+    songName_inner   =  arrayList.get(position).getHymn_title_luganda();
+}else if (language.equalsIgnoreCase(Variables.KEY_LANGUAGE_LANGI)){
+    songName_inner   =  arrayList.get(position).getHymn_title_langi();
+}
+
         String NewsongName;
 
-        if (songName_inner.length()>25){
-            NewsongName=songName_inner.substring(0, 25)+"...";
-        }else {
-            NewsongName = songName_inner;
-        }
-        viewHolder.name.setText(arrayList.get(position).getHymn_number()+" "+NewsongName);
-        //view holder for editing
+        if (songName_inner !=null && !songName_inner.equalsIgnoreCase("null") ) {
+            if (songName_inner.length() > 60) {
+                NewsongName = songName_inner.substring(0, 60) + "...";
 
+            } else {
+                NewsongName = songName_inner;
+            }
+            viewHolder.container.setVisibility(View.VISIBLE);
+
+            viewHolder.name.setText(arrayList.get(position).getHymn_number() + " " + NewsongName);
+            //view holder for editing
+        }else {
+            viewHolder.name.setText("title not set");
+
+            viewHolder.container.setVisibility(View.GONE);
+        }
 
     }
 
@@ -316,12 +335,14 @@ Context context;
     public class viewHolder extends RecyclerView.ViewHolder {
         //hymns
         TextView name;
-        Button delete,edit;
+//        Button delete,edit;
+        View container;
         public viewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
-            delete = itemView.findViewById(R.id.deleteBtn);
-            edit =  itemView.findViewById(R.id.editBtn);
+            container = itemView.findViewById(R.id.container);
+//            delete = itemView.findViewById(R.id.deleteBtn);
+//            edit =  itemView.findViewById(R.id.editBtn);
 
 
 

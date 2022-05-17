@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     MenuItem bottom_nav_home,bottom_nav_hymns,bottom_nav_account;
     RecyclerView recyclerViewHome,recyclerViewHymn;
     View homeView, hymnView, accountView;
-    ItemTouchHelper itemTouchHelper;
+    ItemTouchHelper itemTouchHelper,itemTouchHelperHymnSongs;
 
 
     @Override
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.navigationBarView);
         recyclerViewHome = findViewById(R.id.recycler_view_home);
         itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelperHymnSongs = new ItemTouchHelper(simpleCallbackHymnSongs);
 
         recyclerViewHymn = findViewById(R.id.recycler_view_hymn);
         bottom_nav_menu = navigationView.getMenu();
@@ -86,7 +88,8 @@ public class MainActivity extends AppCompatActivity {
                         homeView.setVisibility(View.VISIBLE);
                         accountView.setVisibility(View.GONE);
                         hymnView.setVisibility(View.GONE);
-                        showHomeSongs("6",intentLanguage);
+                        showHomeSongs(Variables.pref.getString(Variables.KEY_HYMN_NUMBER,"1"),
+                                Variables.pref.getString(Variables.KEY_TYPE,null));
 
                         return true;
                     case R.id.hymns:
@@ -97,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                         homeView.setVisibility(View.GONE);
                         accountView.setVisibility(View.GONE);
                         hymnView.setVisibility(View.VISIBLE);
-                        showHymnSongs();
+                        showHymnSongs(intentLanguage);
                         return true;
                     case R.id.account:
                         bottom_nav_home.setIcon(getResources().getDrawable(R.drawable.home));
@@ -177,8 +180,61 @@ public class MainActivity extends AppCompatActivity {
 
 
     };
+    ItemTouchHelper.SimpleCallback simpleCallbackHymnSongs = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
 
-    private void showHymnSongs() {
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            String title = (String) viewHolder.itemView.getTag();
+            String index = title.substring(1);
+            String language = title.substring(0,1);
+            switch (direction){
+                case ItemTouchHelper.LEFT:
+//                    removeItem(title);
+//                    startActivity( new Intent(Favorites.this, Favorites.class));
+
+                    break;
+                case ItemTouchHelper.RIGHT:
+//                    openItem(index,language);
+                    //opening the song
+
+
+                    break;
+
+            }
+
+        }
+//        putting the colors man
+
+        @Override
+        public void onChildDraw(@NonNull Canvas c,
+                                @NonNull RecyclerView recyclerView,
+                                @NonNull RecyclerView.ViewHolder viewHolder,
+                                float dX,
+                                float dY,
+                                int actionState,
+                                boolean isCurrentlyActive) {
+            new RecyclerViewSwipeDecorator.Builder(MainActivity.this,c,recyclerView,viewHolder, dX,dY,actionState,isCurrentlyActive)
+                   .addSwipeLeftBackgroundColor(ContextCompat.getColor(MainActivity.this,R.color.edit_color))
+//                   .addSwipeLeftActionIcon(R.drawable.ic_baseline_arrow_previous_ios_24)
+                   .addSwipeRightBackgroundColor(ContextCompat.getColor(MainActivity.this,R.color.delete_color))
+//                   .addSwipeRightActionIcon(R.drawable.ic_baseline_arrow_next_ios_24)
+                   .addSwipeRightLabel("Edit")
+                   .addSwipeLeftLabel("Delete")
+                    .create()
+                    .decorate();
+
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+        }
+
+
+
+    };
+
+    private void showHymnSongs(String language) {
         Variables.noteBooRefSongs.orderBy(Variables.KEY_HYMN_NUMBER).addSnapshotListener((queryDocumentSnapshots, e) -> {
             if (e != null){
                 return;
@@ -190,71 +246,27 @@ public class MainActivity extends AppCompatActivity {
                 SongNote note = documentSnapshot.toObject(SongNote.class);
                 note.setDocumentID(documentSnapshot.getId());
                 ItemModelSongs itemModel = new ItemModelSongs();
-                String name = note.getHymn_title_english();
-                String langi = note.getHymn_title_langi();
-                String luganda = note.getHymn_title_luganda();
-                String hymnNumber = note.getHymn_number();
-                String hymnKey = note.getHymn_key();
-                data =name;
-                itemModel.setHymn_title_english(data);
-                itemModel.setHymn_title_langi(langi);
-                itemModel.setHymn_title_luganda(luganda);
-                itemModel.setHymn_number(hymnNumber);
-                itemModel.setHymn_key(hymnKey);
+               itemModel.setHymn_title_luganda(note.getHymn_title_luganda());
+               itemModel.setHymn_title_langi(note.getHymn_title_langi());
+               itemModel.setHymn_title_english(note.getHymn_title_english());
+itemModel.setHymn_number(note.getHymn_number());
 
-                itemModel.set_1hymn_chorus_english(note.get_1hymn_chorus_english());
-                itemModel.set_2hymn_chorus_english(note.get_2hymn_chorus_english());
-                itemModel.set_3hymn_chorus_english(note.get_3hymn_chorus_english());
-                itemModel.set_4hymn_chorus_english(note.get_4hymn_chorus_english());
-                itemModel.set_5hymn_chorus_english(note.get_5hymn_chorus_english());
-                itemModel.set_7hymn_chorus_english(note.get_7hymn_chorus_english());
-                itemModel.set_6hymn_chorus_english(note.get_6hymn_chorus_english());
-
-                itemModel.set_1hymn_VERSE_english(note.get_1hymn_VERSE_english());
-                itemModel.set_2hymn_VERSE_english(note.get_2hymn_VERSE_english());
-                itemModel.set_3hymn_VERSE_english(note.get_3hymn_VERSE_english());
-                itemModel.set_4hymn_VERSE_english(note.get_4hymn_VERSE_english());
-                itemModel.set_5hymn_VERSE_english(note.get_5hymn_VERSE_english());
-                itemModel.set_6hymn_VERSE_english(note.get_6hymn_VERSE_english());
-                itemModel.set_7hymn_VERSE_english(note.get_7hymn_VERSE_english());
-
-                itemModel.set_1hymn_chorus_langi(note.get_1hymn_chorus_langi());
-                itemModel.set_2hymn_chorus_langi(note.get_2hymn_chorus_langi());
-                itemModel.set_3hymn_chorus_langi(note.get_3hymn_chorus_langi());
-                itemModel.set_4hymn_chorus_langi(note.get_4hymn_chorus_langi());
-                itemModel.set_5hymn_chorus_langi(note.get_5hymn_chorus_langi());
-                itemModel.set_7hymn_chorus_langi(note.get_7hymn_chorus_langi());
-                itemModel.set_6hymn_chorus_langi(note.get_6hymn_chorus_langi());
-
-                itemModel.set_1hymn_VERSE_langi(note.get_1hymn_VERSE_langi());
-                itemModel.set_2hymn_VERSE_langi(note.get_2hymn_VERSE_langi());
-                itemModel.set_3hymn_VERSE_langi(note.get_3hymn_VERSE_langi());
-                itemModel.set_4hymn_VERSE_langi(note.get_4hymn_VERSE_langi());
-                itemModel.set_5hymn_VERSE_langi(note.get_5hymn_VERSE_langi());
-                itemModel.set_6hymn_VERSE_langi(note.get_6hymn_VERSE_langi());
-                itemModel.set_7hymn_VERSE_langi(note.get_7hymn_VERSE_langi());
-
-                itemModel.set_1hymn_chorus_luganda(note.get_1hymn_chorus_luganda());
-                itemModel.set_2hymn_chorus_luganda(note.get_2hymn_chorus_luganda());
-                itemModel.set_3hymn_chorus_luganda(note.get_3hymn_chorus_luganda());
-                itemModel.set_4hymn_chorus_luganda(note.get_4hymn_chorus_luganda());
-                itemModel.set_5hymn_chorus_luganda(note.get_5hymn_chorus_luganda());
-                itemModel.set_7hymn_chorus_luganda(note.get_7hymn_chorus_luganda());
-                itemModel.set_6hymn_chorus_luganda(note.get_6hymn_chorus_luganda());
-
-                itemModel.set_1hymn_VERSE_luganda(note.get_1hymn_VERSE_luganda());
-                itemModel.set_2hymn_VERSE_luganda(note.get_2hymn_VERSE_luganda());
-                itemModel.set_3hymn_VERSE_luganda(note.get_3hymn_VERSE_luganda());
-                itemModel.set_4hymn_VERSE_luganda(note.get_4hymn_VERSE_luganda());
-                itemModel.set_5hymn_VERSE_luganda(note.get_5hymn_VERSE_luganda());
-                itemModel.set_6hymn_VERSE_luganda(note.get_6hymn_VERSE_luganda());
-                itemModel.set_7hymn_VERSE_luganda(note.get_7hymn_VERSE_luganda());
-
+//                if(note.getHymn_title_english() != null){
+//                    itemModel.setHymn_title_english(note.getHymn_title_english());
+//
+//                }else if(note.getHymn_title_luganda() != null){
+//                    itemModel.setHymn_title_luganda(note.getHymn_title_luganda());
+//
+//
+//                }else if(note.getHymn_title_langi() != null){
+//                    itemModel.setHymn_title_langi(note.getHymn_title_langi());
+//                }
                 arrayList.add(itemModel);
 
             }
 
-            recyclerViewHymn.setAdapter(new CustomAdapterHymns(arrayList,MainActivity.this));
+            recyclerViewHymn.setAdapter(new CustomAdapterHymns(arrayList,MainActivity.this,language));
+            itemTouchHelperHymnSongs.attachToRecyclerView(recyclerViewHymn);
 
         });
 
@@ -270,7 +282,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         isLoggedIn();
-        showHomeSongs(Variables.pref.getString(Variables.KEY_HYMN_NUMBER,"1"),intentLanguage);
+        showHomeSongs(Variables.pref.getString(Variables.KEY_HYMN_NUMBER,"1"),
+                Variables.pref.getString(Variables.KEY_TYPE,null));
 
     }
 
@@ -384,6 +397,7 @@ Variables.noteBooRefSongs.whereEqualTo(Variables.KEY_HYMN_NUMBER,queryIndex)
                             AdminNote note = documentSnapshot.toObject(AdminNote.class);
                             toolbar.setTitle(R.string.app_name);
                             toolbar.setSubtitle(note.getEditor_type()+"•"+note.getType());
+                            intentLanguage= note.getType();
                         }
                     }
                 });

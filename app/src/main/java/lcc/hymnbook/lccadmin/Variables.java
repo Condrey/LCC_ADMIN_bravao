@@ -9,6 +9,9 @@ import java.util.HashMap;
 
 public class Variables {
 
+     static final String KEY_LANGUAGE_LUGANDA="Luganda";
+     static final String KEY_LANGUAGE_ENGLISH="English";
+     static final String KEY_LANGUAGE_LANGI="Langi";
      static final String KEY_EDITOR_TYPE="editor_type";
      static final String KEY_EMAIL = "email";
      static final String KEY_FIRST_NAME = "first_name";
