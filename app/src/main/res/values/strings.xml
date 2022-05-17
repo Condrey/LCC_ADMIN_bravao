@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">LCC ADMIN</string>
+
+    <string name="lcc_hymn_book">LCC HYMN BOOK</string>
+    <string name="password">Password</string>
+    <string name="hymns">Hymns</string>
+    <string name="account">Account</string>
+    <string name="home">Home</string>
+    <string name="Song_chorus_title">Chorus</string>
+    <string name="Song_chorus">WE praise him</string>
+    <string name="_2">" verse 2"</string>
+    <string name="Song_key">C Major</string>
+    <string name="song_name">To God be the Glory</string>
+    <string name="verse">verse</string>
+    <string name="verse_title">verse_title</string>
+    <string name="_1">1</string>
+    <string name="verse1">verse 1</string>
+    <string name="verse2">verse 2</string>
+    <string name="verse3">verse 3</string>
+    <string name="verse4">verse 4</string>
+    <string name="verse5">verse 5</string>
+    <string name="verse6">verse 6</string>
+    <string name="verse7">verse 7</string>
+</resources>

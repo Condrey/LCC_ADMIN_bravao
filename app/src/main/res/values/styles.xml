@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="songName">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginLeft">18dp</item>
+    </style>
+
+    <style name="songkey">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textStyle">bold</item>
+
+        <item name="android:layout_marginLeft">18dp</item>
+        </style>
+
+    <style name="songverse">
+        <item name="android:text">@string/verse</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:layout_marginLeft">18dp</item></style>
+    <style name="chorus">
+        <item name="android:textSize">25sp</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textStyle">bold</item>
+
+        <item name="android:layout_marginLeft">18dp</item></style>
+
+    <style name="songverse_number">
+        <item name="android:textSize">25sp</item>
+        <item name="android:text">@string/verse_title</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="android:textColor">@color/verse_color</item>
+        <item name="android:layout_marginLeft">18dp</item>
+
+    </style>
+    <style name="chorus_title"><item name="android:textSize">25sp</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="android:textColor">@color/verse_color</item>
+        <item name="android:textStyle">italic|bold</item>
+        <item name="android:layout_marginLeft">18dp</item>
+    </style>
+
+    <style name="bottom_nav_selected">
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="bottom_nav_not_selected">
+        <item name="android:clickable">true</item>
+        <item name="tint">@color/material_on_background_emphasis_medium</item>
+        <item name="android:textColor">@color/material_on_background_emphasis_medium</item>
+    </style>
+
+    <style name="bottom_nav_not_favorite">
+        <item name="android:clickable">true</item>
+        <item name="tint">@color/verse_color</item>
+        <item name="android:textColor">@color/verse_color</item>
+    </style>
+
+    <style name="Widget.LCC.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextAppearance">@color/text_color</item>
+        <item name="hintTextColor">@color/text_color</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="boxStrokeColor">@color/text_color</item>
+    </style>
+
+
+
+</resources>

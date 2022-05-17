@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#e8eaf6</color>
+    <color name="colorOnPrimary">#ffffff</color>
+    <color name="colorPrimaryContainer">#b6b8c3</color>
+    <color name="colorOnPrimaryContainer">#74757A</color>
+    <color name="colorPrimaryInverse">#A9A7AF</color>
+    <color name="colorSecondary">#e8eaf6</color>
+    <color name="colorOnSecondary">#ffffff</color>
+    <color name="colorSecondaryContainer">#b6b8c3</color>
+    <color name="colorOnSecondaryContainer">#ff1d192b</color>
+    <color name="colorTertiary">#ff1d192b</color>
+    <color name="colorOnTertiary">#ffffff</color>
+    <color name="colorTertiaryContainer">#ffffd8e4</color>
+    <color name="colorOnTertiaryContainer">#ff31111d</color>
+
+    <color name="colorError">#ffb3261e</color>
+    <color name="colorOnError">#ffffff</color>
+    <color name="colorErrorContainer">#fff9dedc</color>
+    <color name="colorOnErrorContainer">#ff410e0b</color>
+    <color name="colorOutline">#ff79747e</color>
+    <color name="colorBackground">#fffffbfe</color>
+    <color name="colorOnBackground">#ff1c1b1f</color>
+    <color name="colorSurface">#fffffbfe</color>
+    <color name="colorOnSurface">#ff1c1b1f</color>
+    <color name="colorSurfaceVariant">#ffe7e0ec</color>
+    <color name="colorOnSurfaceVariant">#ff49454f</color>
+    <color name="colorSurfaceInverse">#ff313033</color>
+    <color name="colorOnSurfaceInverse">#fff4eff4</color>
+
+
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="swipeColor">#36686565</color>
+    <color name="background_color">#FFFFFF</color>
+    <color name="delete_color">#D57575</color>
+    <color name="edit_color">#C98694DD</color>
+    <color name="text_color">#000000</color>
+    <color name="verse_color">#990A00</color>
+    <color name="gray">#494747</color>
+    <color name="container">#07138A</color>
+    <color name="selected">#07138A</color>
+    <color name="actionbar">#07138A</color>
+    <color name="listBackground">#FFFFFF</color>
+
+    <color name="logocolor">#07138A</color>
+    <color name="searchcolor">#BFFFFFFF</color>
+    <color name="search_Bg_color">#27FFFFFF</color>
+    <color name="green">#08780C</color>
+    <color name="dirty_green">#6A08780C</color>
+    <color name="itemlist_bgcolor">@color/swipeColor</color>
+    <color name="contaier_bg_color">#FFFFFF</color>
+    <color name="container_stroke_color">#65383838</color>
+    <color name="transluscent_black_color">#32000000</color>
+    <color name="transluscent_dark_color">#D8000000</color>
+
+    <color name="arrow_stroke_color">#000000</color>
+    <color name="positive_button">#388E3C</color>
+    <color name="negative_button">#FF8A65</color>
+    <color name="transparent_color">#00FFFFFF</color>
+
+    <!--    colors for bottom navigation-->
+
+    <color name="bottom_nav_text_color_active">#006480</color>
+    <color name="bottom_nav_icon_color_active">#006480</color>
+    <color name="bottom_nav_container_color">@color/colorSurface</color>
+    <color name="bottom_nav_icon_and_text_color_inactive">#65383838</color>
+    <color name="bottom_navigation_icon_and_text_color_inactive">#BA373636</color>
+    <!--colors for dials button-->
+    <color name="dials_button_color">#D57575</color>
+    <color name="dials_ripple_color">#ffb3261e</color>
+    <!--colors for collasing toolbar-->
+    <color name="status_bar_collapsing_toolbar">#49454F</color>
+    <color name="scrim_collapsing_toolbar">#49454F</color>
+    <!--    brad color-->
+    <color name="brand_color">#303F9F</color>
+    <color name="controlNormal">#601C1B1F</color>
+</resources>

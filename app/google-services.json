@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "598793094573",
+    "firebase_url": "https://lcc-hymn-book-default-rtdb.firebaseio.com",
+    "project_id": "lcc-hymn-book",
+    "storage_bucket": "lcc-hymn-book.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598793094573:android:b34c2eb9388d230e744d24",
+        "android_client_info": {
+          "package_name": "lcc.books.hymnbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "598793094573-r4u2tu8mfho3jh1v2gbpqo6ltn4nl7h7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGklApsDEXNheOwJisRL47Lx6yud4Cl2g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "598793094573-r4u2tu8mfho3jh1v2gbpqo6ltn4nl7h7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598793094573:android:afefba3b75febcce744d24",
+        "android_client_info": {
+          "package_name": "lcc.hymnbook.lccadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "598793094573-r4u2tu8mfho3jh1v2gbpqo6ltn4nl7h7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGklApsDEXNheOwJisRL47Lx6yud4Cl2g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "598793094573-r4u2tu8mfho3jh1v2gbpqo6ltn4nl7h7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598793094573:android:6a7d25c84d90e6df744d24",
+        "android_client_info": {
+          "package_name": "lcc.hymnbook.llcadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "598793094573-r4u2tu8mfho3jh1v2gbpqo6ltn4nl7h7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGklApsDEXNheOwJisRL47Lx6yud4Cl2g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "598793094573-r4u2tu8mfho3jh1v2gbpqo6ltn4nl7h7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
